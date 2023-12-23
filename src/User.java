@@ -7,7 +7,7 @@ public class User extends Account {
 	
 	private boolean state;
 	
-	public boolean LoginState() { //��n�J���A
+	public boolean LoginState() { //登入狀態
 		return state;
 	}
 	

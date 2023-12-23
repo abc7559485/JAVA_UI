@@ -20,33 +20,33 @@ public class Regist extends JFrame implements ActionListener {
 	JButton regist;
 
 	Regist(){
-		setTitle("���U");
+		setTitle("註冊");
 		setSize(400, 300);
 
 		panel = new JPanel();
 		panel.setLayout(null);
 
-		usernameLabel = new JLabel("�ϥΪ̦W�١G");
+		usernameLabel = new JLabel("帳號：");
         usernameLabel.setBounds(40, 10, 100, 30);
         usernameField = new JTextField();
         usernameField.setBounds(130, 10, 200, 30);
 
-        passwordLabel = new JLabel("�K�X�G");
+        passwordLabel = new JLabel("密碼：");
         passwordLabel.setBounds(40, 50, 100, 30);
         passwordField = new JPasswordField();
         passwordField.setBounds(130, 50, 200, 30);
 
-        passwordLabel2 = new JLabel("�A����J�K�X�G");
+        passwordLabel2 = new JLabel("重複密碼：");
         passwordLabel2.setBounds(40, 90, 100, 30);
         passwordField2 = new JPasswordField();
         passwordField2.setBounds(130, 90, 200, 30);
 
-        usermailLabel = new JLabel("�q�l�l��G");
+        usermailLabel = new JLabel("電子信箱：");
         usermailLabel.setBounds(40, 130, 100, 30);
         usermailField = new JTextField();
         usermailField.setBounds(130, 130, 200, 30);
 
-        regist = new JButton("���U");
+        regist = new JButton("註冊");
         regist.setBounds(130, 170, 100, 30);
 
 
@@ -73,23 +73,23 @@ public class Regist extends JFrame implements ActionListener {
 			String password2 = passwordField2.getText();
 			String mail = usermailField.getText();
 			if(username.equals("")) {
-				JOptionPane.showMessageDialog(this, "���U���ѡA�ϥΪ̦W�٤��ର�ť�", "���~", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, "使用者名稱不能為空白", "錯誤", JOptionPane.ERROR_MESSAGE);
 			}
 			else if(password.length() < 8 || password.length() > 16) {
-				JOptionPane.showMessageDialog(this, "���U���ѡA�K�X���׻ݬ�8��16�줸", "���~", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, "密碼長度需介於8至16位元之間", "錯誤", JOptionPane.ERROR_MESSAGE);
 			}
 			else if(!mail.contains("@")) {
-				JOptionPane.showMessageDialog(this, "���U���ѡA�q�l�l��榡�����T", "���~", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, "錯誤的電子信箱格式", "錯誤", JOptionPane.ERROR_MESSAGE);
 			}
 			else if((Account.map.containsKey(usernameField.getText()))) {
-				JOptionPane.showMessageDialog(this, "���U���ѡA�w���ۦP�Τ�W��", "���~", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, "該使用者名稱已被註冊", "錯誤", JOptionPane.ERROR_MESSAGE);
 			}										
 			else if(!password.equals(password2)){
-				JOptionPane.showMessageDialog(this, "���U���ѡA�K�X���~", "���~", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, "密碼錯誤", "錯誤", JOptionPane.ERROR_MESSAGE);
 			}										
 			else {
 				new Account(username, password, mail);
-				JOptionPane.showMessageDialog(this, "���U���");
+				JOptionPane.showMessageDialog(this, "註冊成功");
 				setVisible(false);
 			}										
 		}
