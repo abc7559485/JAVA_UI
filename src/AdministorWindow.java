@@ -78,8 +78,13 @@ public class AdministorWindow {
 	JButton LeagueManage = new JButton("聯盟管理");
 	LeagueManage.setFont(new Font("新細明體", Font.PLAIN, 16));
 	
-	JButton ActivityManage = new JButton("活動管理");
-	ActivityManage.setFont(new Font("新細明體", Font.PLAIN, 16));
+	JButton SponsorManage = new JButton("贊助管理");
+	SponsorManage.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		    new SponsorWindow();
+		}
+	});
+	SponsorManage.setFont(new Font("新細明體", Font.PLAIN, 16));
 	
 	textField = new JTextField();
 	textField.setFont(new Font("新細明體", Font.PLAIN, 16));
@@ -118,7 +123,7 @@ public class AdministorWindow {
 					.addComponent(VersionInfo, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)
 					.addComponent(GameManage, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)
 					.addComponent(LeagueManage, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)
-					.addComponent(ActivityManage, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)
+					.addComponent(SponsorManage, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)
 					.addComponent(Return, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE))
 				.addPreferredGap(ComponentPlacement.RELATED)
 				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -149,7 +154,7 @@ public class AdministorWindow {
 						.addGap(18)
 						.addComponent(LeagueManage, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE)
 						.addGap(18)
-						.addComponent(ActivityManage, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE))
+						.addComponent(SponsorManage, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE))
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 341, GroupLayout.PREFERRED_SIZE))
 				.addGap(18)
 				.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)

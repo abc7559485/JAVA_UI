@@ -72,6 +72,16 @@ public class MainWindow extends JFrame{
 				new AdministorLogin();
 			}
 		});
+		
+		JButton SponsorButton = new JButton("贊助我們");
+		SponsorButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			    new SponsorWindow();
+			}
+		});
+		SponsorButton.setFont(new Font("新細明體", Font.PLAIN, 16));
+		SponsorButton.setBounds(10, 625, 131, 47);
+		frame.getContentPane().add(SponsorButton);
 		SearchButton.setFont(new Font("新細明體", Font.PLAIN, 16));
 		SearchButton.setBounds(10, 10, 104, 36);
 		frame.getContentPane().add(SearchButton);
