@@ -1,3 +1,4 @@
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,6 +26,7 @@ public class Regist extends JFrame implements ActionListener {
 
 		panel = new JPanel();
 		panel.setLayout(null);
+		setResizable(false);
 
 		usernameLabel = new JLabel("帳號：");
         usernameLabel.setBounds(40, 10, 100, 30);

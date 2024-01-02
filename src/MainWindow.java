@@ -15,7 +15,6 @@ import javax.swing.JPanel;
 import javax.swing.JLayeredPane;
 import java.awt.Color;
 import javax.swing.ImageIcon;
-
 public class MainWindow extends JFrame{
 	
 	/**
@@ -65,6 +64,27 @@ public class MainWindow extends JFrame{
 		frame.getContentPane().setLayout(null);
 		frame.setResizable(false);
 		
+		JButton SearchButton = new JButton("");
+		SearchButton.setForeground(new Color(0, 0, 0));
+		SearchButton.setBackground(new Color(0, 0, 0));
+		SearchButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new AdministorLogin();
+			}
+		});
+		SearchButton.setFont(new Font("新細明體", Font.PLAIN, 16));
+		SearchButton.setBounds(10, 10, 104, 36);
+		frame.getContentPane().add(SearchButton);
+		
+		JPanel panel_1_1 = new JPanel();
+		panel_1_1.setLayout(null);
+		panel_1_1.setBounds(735, 116, 433, 251);
+		frame.getContentPane().add(panel_1_1);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("公告：此競技平台仍在測試，敬請隨時更新");
+		lblNewLabel_1_1.setBounds(10, 10, 544, 59);
+		panel_1_1.add(lblNewLabel_1_1);
+		
 		
 		AccountField = new JTextField();
 		AccountField.setFont(new Font("新細明體", Font.PLAIN, 16));
@@ -84,69 +104,24 @@ public class MainWindow extends JFrame{
 		checkcodeField.setColumns(10);
 		
 		JLabel account_1 = new JLabel("\u5E33\u865F\uFF1A");
-		account_1.setFont(new Font("新細明體", Font.PLAIN, 24));
+		account_1.setFont(new Font("新細明體", Font.PLAIN, 20));
 		account_1.setBounds(773, 421, 72, 30);
 		frame.getContentPane().add(account_1);
 		
 		JLabel password = new JLabel("\u5BC6\u78BC\uFF1A");
-		password.setFont(new Font("新細明體", Font.PLAIN, 24));
+		password.setFont(new Font("新細明體", Font.PLAIN, 20));
 		password.setBounds(773, 471, 119, 45);
 		frame.getContentPane().add(password);
 		
 		JLabel checkcode = new JLabel("\u9A57\u8B49\u78BC\uFF1A");
-		checkcode.setFont(new Font("新細明體", Font.PLAIN, 24));
+		checkcode.setFont(new Font("新細明體", Font.PLAIN, 20));
 		checkcode.setBounds(749, 526, 119, 45);
 		frame.getContentPane().add(checkcode);
 		
 		JLabel checkcode_display = new JLabel("\u9A57\u8B49\u78BC\uFF1A" + checkcode() );
-		checkcode_display.setFont(new Font("新細明體", Font.PLAIN, 18));
+		checkcode_display.setFont(new Font("新細明體", Font.PLAIN, 20));
 		checkcode_display.setBounds(851, 636, 204, 36);
 		frame.getContentPane().add(checkcode_display);
-		
-		JButton registButton = new JButton("\u8A3B\u518A");
-		registButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				new Regist();
-			}
-		});
-		registButton.setBounds(948, 581, 87, 45);
-		frame.getContentPane().add(registButton);
-		
-		JButton LoginButton = new JButton("\u767B\u5165");
-		LoginButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String account = AccountField.getText();
-				String password = new String(passwordField.getPassword());
-				String checkcode = checkcodeField.getText();
-				if(!(checkcode.equals(checkCode))) {
-					JOptionPane.showMessageDialog(null,  "登入失敗，驗證碼錯誤");
-					checkcode_display.setText("驗證碼： " + checkcode());
-				}
-				else if (Account.map.containsKey(account)) {
-					if(password.equals(Account.map.get(account).getPassword())) {
-						JOptionPane.showMessageDialog(null, ":");
-						new MainWindow_Login();
-						frame.setVisible(false);
-						
-					}
-					else {
-	            		JOptionPane.showMessageDialog(null, "登入失敗，密碼錯誤", "錯誤", JOptionPane.ERROR_MESSAGE);
-	            	}
-				}
-				
-				else {
-	                JOptionPane.showMessageDialog(null, "登入失敗，請檢查使用者名稱和密碼", "錯誤", JOptionPane.ERROR_MESSAGE);
-	                checkcode_display.setText("驗證碼： " + checkcode());
-	            }
-			}
-		});
-		LoginButton.setBounds(1045, 581, 87, 45);
-		frame.getContentPane().add(LoginButton);
-		
-		
-		JButton checkcodeButton = new JButton("\u9A57\u8B49\u78BC");
-		checkcodeButton.setBounds(851, 581, 87, 45);
-		frame.getContentPane().add(checkcodeButton);	
 		
 		SearchBar = new JTextField();
 		SearchBar.addFocusListener(new FocusAdapter() {
@@ -166,21 +141,90 @@ public class MainWindow extends JFrame{
 		frame.getContentPane().add(SearchBar);
 		SearchBar.setColumns(10);
 		
+		
+		
 		JPanel panel = new JPanel();
 		panel.setBounds(734, 391, 430, 281);
 		frame.getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JButton GuestButton = new JButton("訪客登入");
+		GuestButton.setFont(new Font("新細明體", Font.PLAIN, 16));
+		GuestButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			    new MainWindow_Guest();
+			    frame.setVisible(false);
+			}
+		});
+		GuestButton.setBounds(10, 192, 105, 42);
+		panel.add(GuestButton);
 		
 		
+		JButton checkcodeButton = new JButton("\u9A57\u8B49\u78BC");
+		checkcodeButton.setBounds(123, 191, 87, 45);
+		panel.add(checkcodeButton);
+		checkcodeButton.setFont(new Font("新細明體", Font.PLAIN, 16));
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(MainWindow.class.getResource("/Resource/MainWindow.jpg")));
-		lblNewLabel.setBounds(0, 0, 1330, 697);
-		frame.getContentPane().add(lblNewLabel);
+		JButton registButton = new JButton("\u8A3B\u518A");
+		registButton.setBounds(221, 191, 87, 45);
+		panel.add(registButton);
+		registButton.setFont(new Font("新細明體", Font.PLAIN, 16));
+		
+		JButton LoginButton = new JButton("\u767B\u5165");
+		LoginButton.setBounds(318, 191, 87, 45);
+		panel.add(LoginButton);
+		LoginButton.setFont(new Font("新細明體", Font.PLAIN, 16));
+		LoginButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String account = AccountField.getText();
+				String password = new String(passwordField.getPassword());
+				String checkcode = checkcodeField.getText();
+				if(!(checkcode.equals(checkCode))) {
+					JOptionPane.showMessageDialog(null,  "登入失敗，驗證碼錯誤");
+					checkcode_display.setText("驗證碼： " + checkcode());
+				}
+				else if (Account.map.containsKey(account)) {
+					if(password.equals(Account.map.get(account).getPassword())) {
+						JOptionPane.showMessageDialog(null, "登入成功");
+						Start.user = new User(Account.map.get(account));
+						Start.currentAccount = Account.map.get(account);
+						new MainWindow_Login();
+						frame.setVisible(false);
+						
+					}
+					else {
+	            		JOptionPane.showMessageDialog(null, "登入失敗，密碼錯誤", "錯誤", JOptionPane.ERROR_MESSAGE);
+	            	}
+				}
+				
+				else {
+	                JOptionPane.showMessageDialog(null, "登入失敗，請檢查使用者名稱和密碼", "錯誤", JOptionPane.ERROR_MESSAGE);
+	                checkcode_display.setText("驗證碼： " + checkcode());
+	            }
+			}
+		});
+		registButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Regist();
+			}
+		});
 		checkcodeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				checkcode_display.setText("驗證碼： " + checkcode());
 			}
 		});
+		
+		JLabel lblNewLabel_2 = new JLabel("New label");
+		lblNewLabel_2.setIcon(new ImageIcon(MainWindow.class.getResource("/Resource/toothless-dance.gif")));
+		lblNewLabel_2.setBounds(112, 148, 480, 461);
+		frame.getContentPane().add(lblNewLabel_2);
+		
+		
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(MainWindow.class.getResource("/Resource/MainWindow.jpg")));
+		lblNewLabel.setBounds(0, 0, 1264, 681);
+		frame.getContentPane().add(lblNewLabel);
 	}
 	
 	
