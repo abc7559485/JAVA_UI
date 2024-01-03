@@ -10,6 +10,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class MainWindow_Login {
 
@@ -51,6 +53,15 @@ public class MainWindow_Login {
 	frame.setResizable(false);
 	
 	textField = new JTextField();
+	textField.addFocusListener(new FocusAdapter() {
+		@Override
+		public void focusGained(FocusEvent e) {
+		    textField.setText("");
+		}
+		public void focusLost(FocusEvent e) {
+		    textField.setText("輸入文字搜尋聯盟、玩家、競賽紀錄等......");
+		}
+	});
 	textField.setText("輸入文字搜尋聯盟、玩家、競賽紀錄等......");
 	textField.setFont(new Font("新細明體", Font.PLAIN, 16));
 	textField.setColumns(10);

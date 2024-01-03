@@ -56,4 +56,9 @@ public class Game {
     public static Game getGame(String gameName) {
 	return gameList.get(gameNameList.indexOf(gameName));
     }
+    
+    public void gameSetting(String gameName, int amounts) {
+	this.gameName = gameName;
+	this.peopleAmount = amounts; 
+    }
 }

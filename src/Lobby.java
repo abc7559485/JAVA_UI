@@ -5,6 +5,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -22,7 +23,8 @@ import java.awt.event.MouseEvent;
 
 public class Lobby{ //implements ListSelectionListener {
 
-    private JFrame frame;
+    static JFrame frame;
+    private JList<String> list;
     public DefaultListModel<String> modList; 
 
     /**
@@ -33,7 +35,7 @@ public class Lobby{ //implements ListSelectionListener {
 	    public void run() {
 		try {
 		    Lobby window = new Lobby();
-		    window.frame.setVisible(true);
+		    frame.setVisible(true);
 		} catch (Exception e) {
 		    e.printStackTrace();
 		}
@@ -75,6 +77,21 @@ public class Lobby{ //implements ListSelectionListener {
 	CreateButton.setFont(new Font("新細明體", Font.PLAIN, 16));
 	
 	JButton JoinButton = new JButton("加入房間");
+	JoinButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		    try {
+			String title = list.getSelectedValue().split(" ")[0];
+			GameRoom gameRoom = GameRoom.roomList.get(title);
+			gameRoom.enterRoom(Start.currentAccount);
+			new GameRoomWindow(gameRoom);
+			frame.dispose();
+		    }
+		    catch(NullPointerException exception) {
+			JOptionPane.showMessageDialog(null, "請先選取房間或創建房間", "進入房間", JOptionPane.WARNING_MESSAGE);
+		    }
+
+		}
+	});
 	JoinButton.setFont(new Font("新細明體", Font.PLAIN, 16));
 	
 	JButton SearchButton = new JButton("遊戲篩選");
@@ -90,21 +107,18 @@ public class Lobby{ //implements ListSelectionListener {
 	ReturnButton.setFont(new Font("新細明體", Font.PLAIN, 16));
 	
 	JButton ReloadButton = new JButton("刷新頁面");
-	ReloadButton.addMouseListener(new MouseAdapter() {
-		@Override
-		public void mouseClicked(MouseEvent e) {
-		    frame.repaint();
-		    frame.revalidate();
+	ReloadButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		    frame.dispose();
+		    new Lobby();
 		}
 	});
 
+
 	ReloadButton.setFont(new Font("新細明體", Font.PLAIN, 16));
 	
-	modList = new DefaultListModel<String>();
-	for(GameRoom gameRoom: GameRoom.roomList) {
-	    modList.addElement(gameRoom.toString());
-	}
-	JList<String> GameList = new JList<String>(modList);
+	
+	JScrollPane scrollPane = new JScrollPane();
 
 	GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 	groupLayout.setHorizontalGroup(
@@ -113,7 +127,7 @@ public class Lobby{ //implements ListSelectionListener {
 				.addGap(45)
 				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 					.addGroup(groupLayout.createSequentialGroup()
-						.addComponent(GameList, GroupLayout.PREFERRED_SIZE, 697, GroupLayout.PREFERRED_SIZE)
+						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 697, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap())
 					.addGroup(groupLayout.createSequentialGroup()
 						.addComponent(ReturnButton, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
@@ -123,16 +137,16 @@ public class Lobby{ //implements ListSelectionListener {
 						.addComponent(ReloadButton, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
 						.addGap(18)
 						.addComponent(CreateButton, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addPreferredGap(ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
 						.addComponent(JoinButton, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(35, Short.MAX_VALUE))))
+						.addContainerGap(38, Short.MAX_VALUE))))
 	);
 	groupLayout.setVerticalGroup(
 		groupLayout.createParallelGroup(Alignment.LEADING)
 			.addGroup(groupLayout.createSequentialGroup()
 				.addGap(33)
-				.addComponent(GameList, GroupLayout.PREFERRED_SIZE, 438, GroupLayout.PREFERRED_SIZE)
-				.addGap(27)
+				.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 447, GroupLayout.PREFERRED_SIZE)
+				.addGap(18)
 				.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 					.addComponent(ReturnButton, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
 					.addComponent(ReloadButton, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
@@ -141,6 +155,10 @@ public class Lobby{ //implements ListSelectionListener {
 					.addComponent(CreateButton, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
 				.addContainerGap(20, Short.MAX_VALUE))
 	);
+	
+	list = new JList<String>(GameRoom.getGameroomList());
+	list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+	scrollPane.setViewportView(list);
 	frame.getContentPane().setLayout(groupLayout);
     }
 }

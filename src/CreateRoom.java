@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -89,9 +91,25 @@ public class CreateRoom {
 	JButton CreateRoomButton = new JButton("創建房間");
 	CreateRoomButton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-		    String selectedItem = (String)GameMenu.getSelectedItem();
-		    new GameRoom(Game.getGame(selectedItem), roomnameField.getText());
-		    frame.setVisible(false);
+		    String roomName = roomnameField.getText();
+		    if(GameRoom.roomList.containsKey(roomName)) {
+			JOptionPane.showMessageDialog(null, "已有相同名稱的房間", "創建房間", JOptionPane.WARNING_MESSAGE);
+		    }
+		    else if(roomName.equals("")) {
+			JOptionPane.showMessageDialog(null, "房間名稱不能為空白", "創建房間", JOptionPane.WARNING_MESSAGE);
+		    }
+		    
+		    else if(roomName.contains(" ")) {
+			JOptionPane.showMessageDialog(null, "房間名稱不能有空白", "創建房間", JOptionPane.WARNING_MESSAGE);
+		    }
+		    else {
+			String selectedItem = (String)GameMenu.getSelectedItem();
+			GameRoom gameRoom = new GameRoom(Game.getGame(selectedItem), roomName);
+			gameRoom.enterRoom(Start.currentAccount);
+			new GameRoomWindow(gameRoom);
+			Lobby.frame.setVisible(false);
+			frame.setVisible(false);
+		    }
 		}
 	});
 	CreateRoomButton.setFont(new Font("新細明體", Font.PLAIN, 16));

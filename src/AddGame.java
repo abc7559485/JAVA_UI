@@ -2,6 +2,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -84,8 +86,21 @@ public class AddGame {
 	Add.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 		    String name = textField.getText();
-		    int amounts = Integer.parseInt(textField_1.getText());
-		    new Game(name, amounts);
+		    String x = textField_1.getText();
+		    boolean check = true;
+		    for(int i = 0; i < x.length(); i++) {
+			if(!Character.isDigit(x.charAt(i))) {
+			    check = false;
+			}
+		    }
+		    if(check) {
+			int amounts = Integer.parseInt(x);
+			new Game(name, amounts);
+		    }
+		    else {
+			JOptionPane.showMessageDialog(null, "新增遊戲失敗，錯誤的人數格式", "新增遊戲", JOptionPane.WARNING_MESSAGE);
+		    }
+
 		}
 	});
 	Add.setFont(new Font("新細明體", Font.PLAIN, 16));

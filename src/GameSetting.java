@@ -68,6 +68,17 @@ public class GameSetting {
 	frame.getContentPane().add(AddGame);
 	
 	Option = new JButton("遊戲設定");
+	Option.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		    try {
+			    String gameName = gameList.getSelectedValue();
+			    new GameDetailSetting(Game.getGame(gameName));
+		    }
+		    catch (IndexOutOfBoundsException exception){
+			JOptionPane.showMessageDialog(null, "請選取遊戲後再進行操作", "遊戲設定", JOptionPane.WARNING_MESSAGE);
+		    }
+		}
+	});
 	Option.setFont(new Font("新細明體", Font.PLAIN, 16));
 	Option.setBounds(302, 99, 108, 45);
 	frame.getContentPane().add(Option);
@@ -75,11 +86,17 @@ public class GameSetting {
 	JButton removeGame = new JButton("移除遊戲");
 	removeGame.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-		    String gameName = gameList.getSelectedValue();
-		    int result = JOptionPane.showConfirmDialog(null, "確定要移除遊戲？", "移除遊戲", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-		    if(result == JOptionPane.YES_OPTION) {
-			Game.gameList.remove(Game.getGame(gameName));
-			Game.gameNameList.remove(gameName);
+		    try {
+			String gameName = gameList.getSelectedValue();
+			int result = JOptionPane.showConfirmDialog(null, "確定要移除遊戲？", "移除遊戲", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+			if(result == JOptionPane.YES_OPTION) {
+			    Game.gameList.remove(Game.getGame(gameName));
+			    Game.gameNameList.remove(gameName);
+		        }
+		    
+		    }
+		    catch(IndexOutOfBoundsException exception) {
+			JOptionPane.showMessageDialog(null, "請選取遊戲後再進行操作", "遊戲設定", JOptionPane.WARNING_MESSAGE);
 		    }
 		}
 	});
