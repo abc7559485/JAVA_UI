@@ -8,7 +8,7 @@ public class League {
     static ArrayList<League> leagueList = new ArrayList<League>();
     private Account creator;
     private String LeagueColumn;
-    private static final String DEFAULT_COLUMN = "<html>       此聯盟為測試初始聯盟<br/>       歡迎大家加入這個家庭 <br/> 有任何問題皆可找管理員提出 </html>";
+    private static final String DEFAULT_COLUMN = "<html>此聯盟為測試初始聯盟<br/>歡迎大家加入這個家庭<br/>有任何問題皆可找管理員提出</html>";
     
     public League(String name, Account creator) { //創建聯盟
 	this.name = name;
@@ -44,7 +44,7 @@ public class League {
     }
     
     public String toString() {
-	return "聯盟名稱：" + name + "\n聯盟人數：" + this.getMemberAmounts() + "/36";
+	return "<html>聯盟名稱：" + name + "<br/>聯盟人數：" + this.getMemberAmounts() + "/36</html>";
     }
     
     public void setColumn(String column) {
@@ -52,8 +52,14 @@ public class League {
     }
     
     public String getColumn() {
-	if(LeagueColumn.equals(null)) return DEFAULT_COLUMN;
-	return LeagueColumn;
+	if (LeagueColumn == null) {
+	    return DEFAULT_COLUMN;
+	}
+	else {
+	    return LeagueColumn;
+	}
+	
+	
     }
     
     

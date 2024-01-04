@@ -38,6 +38,7 @@ public class LeagueManage {
      */
     private void initialize() {
 	frame = new JFrame();
+	frame.setTitle("聯盟管理");
 	frame.setBounds(100, 100, 554, 440);
 	frame.setVisible(true);
 	frame.getContentPane().setLayout(null);

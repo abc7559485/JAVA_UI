@@ -58,10 +58,10 @@ public class SponsorWindow {
 		    if(!Sponsor.State()) {
 			JOptionPane.showMessageDialog(null, "請先登入贊助商", "登入錯誤", JOptionPane.WARNING_MESSAGE);
 		    }
-		    else if(!Start.sponsor.hasPlan()) {
+		    else if(!Start.currentSponsor.hasPlan()) {
 			    int result = JOptionPane.showConfirmDialog(null, "確定選擇此方案？", "月費方案", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 			    if(result == JOptionPane.YES_OPTION) {
-				Start.sponsor.setPlan(1);
+				Start.currentSponsor.setPlan(1);
 				
 			    }
 		    }
@@ -81,10 +81,10 @@ public class SponsorWindow {
 		    if(!Sponsor.State()) {
 			JOptionPane.showMessageDialog(null, "請先登入贊助商", "登入錯誤", JOptionPane.WARNING_MESSAGE);
 		    }
-		    else if(!Start.sponsor.hasPlan()) {
+		    else if(!Start.currentSponsor.hasPlan()) {
 			int result = JOptionPane.showConfirmDialog(null, "確定選擇此方案？", "年費方案", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 			if(result == JOptionPane.YES_OPTION) {
-			    Start.sponsor.setPlan(2);
+			    Start.currentSponsor.setPlan(2);
 			}
 		    }
 		    else {
@@ -103,10 +103,10 @@ public class SponsorWindow {
 		    if(!Sponsor.State()) {
 			JOptionPane.showMessageDialog(null, "請先登入贊助商", "登入錯誤", JOptionPane.WARNING_MESSAGE);
 		    }
-		    else if(!Start.sponsor.hasPlan()) {
+		    else if(!Start.currentSponsor.hasPlan()) {
 			int result = JOptionPane.showConfirmDialog(null, "確定選擇此方案？", "終生方案", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 			if(result == JOptionPane.YES_OPTION) {
-			    Start.sponsor.setPlan(3);
+			    Start.currentSponsor.setPlan(3);
 			}
 		    }
 		    else {
@@ -118,7 +118,7 @@ public class SponsorWindow {
 	LifeButton.setBounds(534, 68, 252, 352);
 	frame.getContentPane().add(LifeButton);
 	
-	JButton SponsorLoginButton = new JButton("登記贊助商");
+	JButton SponsorLoginButton = new JButton("登入贊助商");
 	SponsorLoginButton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 		    if(!Sponsor.State()) {

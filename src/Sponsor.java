@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 public class Sponsor {
     private String name;
     private String password;
-    private int plan;
+    private int plan = 0;
     static HashMap<String, Sponsor> SponsorList = new HashMap<String, Sponsor>();
     private static boolean state = false;
     
@@ -15,6 +15,7 @@ public class Sponsor {
     }
     
     public void Logout() {
+	Start.currentSponsor = null;
 	state = false;
     }
     
