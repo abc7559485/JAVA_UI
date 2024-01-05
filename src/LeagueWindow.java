@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import java.awt.BorderLayout;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 import javax.swing.JLabel;
 import javax.swing.ListSelectionModel;
@@ -91,6 +92,11 @@ public class LeagueWindow {
 	frame.getContentPane().add(MemberLabel);
 	
 	JButton DetailInfo = new JButton("成員詳細資料");
+	DetailInfo.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		    JOptionPane.showMessageDialog(null, "此功能尚未實作");
+		}
+	});
 	DetailInfo.setFont(new Font("新細明體", Font.PLAIN, 16));
 	DetailInfo.setBounds(462, 78, 190, 52);
 	frame.getContentPane().add(DetailInfo);

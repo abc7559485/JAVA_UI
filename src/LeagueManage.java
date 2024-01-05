@@ -1,6 +1,7 @@
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -45,31 +46,61 @@ public class LeagueManage {
 	frame.setResizable(false);
 	
 	JButton MemberSetting = new JButton("成員設定");
+	MemberSetting.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		    JOptionPane.showMessageDialog(null, "此功能尚未實作");
+		}
+	});
 	MemberSetting.setFont(new Font("新細明體", Font.PLAIN, 16));
 	MemberSetting.setBounds(92, 218, 141, 54);
 	frame.getContentPane().add(MemberSetting);
 	
 	JButton LeagueColumn = new JButton("聯盟公告");
+	LeagueColumn.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		    JOptionPane.showMessageDialog(null, "此功能尚未實作");
+		}
+	});
 	LeagueColumn.setFont(new Font("新細明體", Font.PLAIN, 16));
 	LeagueColumn.setBounds(92, 127, 141, 54);
 	frame.getContentPane().add(LeagueColumn);
 	
 	JButton JoinContest = new JButton("參加競賽");
+	JoinContest.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		    JOptionPane.showMessageDialog(null, "此功能尚未實作");
+		}
+	});
 	JoinContest.setFont(new Font("新細明體", Font.PLAIN, 16));
 	JoinContest.setBounds(92, 45, 141, 54);
 	frame.getContentPane().add(JoinContest);
 	
 	JButton LeagueLevel = new JButton("聯盟階級");
+	LeagueLevel.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		    JOptionPane.showMessageDialog(null, "此功能尚未實作");
+		}
+	});
 	LeagueLevel.setFont(new Font("新細明體", Font.PLAIN, 16));
 	LeagueLevel.setBounds(308, 127, 141, 54);
 	frame.getContentPane().add(LeagueLevel);
 	
 	JButton CreateContest = new JButton("創立競賽");
+	CreateContest.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		    JOptionPane.showMessageDialog(null, "此功能尚未實作");
+		}
+	});
 	CreateContest.setFont(new Font("新細明體", Font.PLAIN, 16));
 	CreateContest.setBounds(308, 45, 141, 54);
 	frame.getContentPane().add(CreateContest);
 	
 	JButton LeagueSetting = new JButton("聯盟設定");
+	LeagueSetting.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		    JOptionPane.showMessageDialog(null, "此功能尚未實作");
+		}
+	});
 	LeagueSetting.setFont(new Font("新細明體", Font.PLAIN, 16));
 	LeagueSetting.setBounds(308, 218, 141, 54);
 	frame.getContentPane().add(LeagueSetting);

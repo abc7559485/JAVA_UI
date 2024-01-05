@@ -5,6 +5,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import java.awt.Font;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.AbstractListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -67,11 +68,21 @@ public class LeagueContestHistory {
 	frame.getContentPane().add(list);
 	
 	JButton DetailInfo = new JButton("詳細資訊");
+	DetailInfo.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		    JOptionPane.showMessageDialog(null, "此功能尚未實作");
+		}
+	});
 	DetailInfo.setFont(new Font("新細明體", Font.PLAIN, 16));
 	DetailInfo.setBounds(331, 62, 127, 44);
 	frame.getContentPane().add(DetailInfo);
 	
 	JButton ViewContest = new JButton("觀看競賽");
+	ViewContest.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		    JOptionPane.showMessageDialog(null, "此功能尚未實作");
+		}
+	});
 	ViewContest.setFont(new Font("新細明體", Font.PLAIN, 16));
 	ViewContest.setBounds(331, 135, 127, 44);
 	frame.getContentPane().add(ViewContest);

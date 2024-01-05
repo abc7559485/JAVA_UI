@@ -95,6 +95,11 @@ public class Lobby{ //implements ListSelectionListener {
 	JoinButton.setFont(new Font("新細明體", Font.PLAIN, 16));
 	
 	JButton SearchButton = new JButton("遊戲篩選");
+	SearchButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		    JOptionPane.showMessageDialog(null, "此功能尚未實作");
+		}
+	});
 	SearchButton.setFont(new Font("新細明體", Font.PLAIN, 16));
 	
 	JButton ReturnButton = new JButton("返回");

@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.AbstractListModel;
 import javax.swing.ScrollPaneConstants;
 import java.awt.event.ActionListener;
@@ -54,17 +55,33 @@ public class AdministorWindow {
      */
     private void initialize() {
 	frame = new JFrame();
+	frame.setTitle("系統管理");
 	frame.setBounds(100, 100, 1080, 720);
 	frame.setResizable(false);
 	frame.setVisible(true);
 	
 	JButton MemberButton = new JButton("用戶清單");
+	MemberButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		    JOptionPane.showMessageDialog(null, "此功能尚未實作");
+		}
+	});
 	MemberButton.setFont(new Font("新細明體", Font.PLAIN, 16));
 	
 	JButton ContestManage = new JButton("競賽管理");
+	ContestManage.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		    JOptionPane.showMessageDialog(null, "此功能尚未實作");
+		}
+	});
 	ContestManage.setFont(new Font("新細明體", Font.PLAIN, 16));
 	
 	JButton VersionInfo = new JButton("版本資訊");
+	VersionInfo.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		    JOptionPane.showMessageDialog(null, "此功能尚未實作");
+		}
+	});
 	VersionInfo.setFont(new Font("新細明體", Font.PLAIN, 16));
 	
 	JButton GameManage = new JButton("遊戲管理");
@@ -76,12 +93,17 @@ public class AdministorWindow {
 	GameManage.setFont(new Font("新細明體", Font.PLAIN, 16));
 	
 	JButton LeagueManage = new JButton("聯盟管理");
+	LeagueManage.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		    JOptionPane.showMessageDialog(null, "此功能尚未實作");
+		}
+	});
 	LeagueManage.setFont(new Font("新細明體", Font.PLAIN, 16));
 	
 	JButton SponsorManage = new JButton("贊助管理");
 	SponsorManage.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-		    new SponsorWindow();
+		    JOptionPane.showMessageDialog(null, "此功能尚未實作");
 		}
 	});
 	SponsorManage.setFont(new Font("新細明體", Font.PLAIN, 16));

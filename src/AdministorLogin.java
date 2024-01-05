@@ -45,6 +45,7 @@ public class AdministorLogin {
      */
     private void initialize() {
 	frame = new JFrame();
+	frame.setTitle("管理員登入");
 	frame.setBounds(100, 100, 450, 228);
 	frame.setVisible(true);
 	frame.setResizable(false);

@@ -100,6 +100,11 @@ public class MainWindow_Guest {
 	panel.add(LogoutButton);
 	
 	JButton ViewContest = new JButton("觀戰競賽");
+	ViewContest.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		    JOptionPane.showMessageDialog(null, "此功能尚未實作");
+		}
+	});
 	ViewContest.setFont(new Font("新細明體", Font.PLAIN, 16));
 	ViewContest.setBounds(164, 216, 114, 44);
 	panel.add(ViewContest);
@@ -111,6 +116,11 @@ public class MainWindow_Guest {
 	panel.add(lblNewLabel_1);
 	
 	JButton ViewContest_1 = new JButton("聯盟列表");
+	ViewContest_1.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		    JOptionPane.showMessageDialog(null, "此功能尚未實作");
+		}
+	});
 	ViewContest_1.setFont(new Font("新細明體", Font.PLAIN, 16));
 	ViewContest_1.setBounds(311, 216, 114, 44);
 	panel.add(ViewContest_1);

@@ -50,6 +50,7 @@ public class GameDetailSetting {
     private void initialize() {
 	
 	frame = new JFrame();
+	frame.setTitle("遊戲設定");
 	frame.setBounds(100, 100, 342, 276);
 	frame.setVisible(true);
 	frame.setResizable(false);

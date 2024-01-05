@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import javax.swing.JTextPane;
@@ -99,6 +100,11 @@ public class GameRoomWindow {
 	frame.getContentPane().add(ReturnButton);
 	
 	JButton Start = new JButton("開始");
+	Start.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		    JOptionPane.showMessageDialog(null, "此功能尚未實作");
+		}
+	});
 	Start.setFont(new Font("新細明體", Font.PLAIN, 16));
 	Start.setBounds(10, 278, 169, 25);
 	frame.getContentPane().add(Start);
